@@ -5,8 +5,11 @@ html
       | SimpleImdb
     = csrf_meta_tags
     = csp_meta_tag
+    link href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css" rel="stylesheet"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js" 
+
   body
     #main-header-navbar
       .container.mb-3

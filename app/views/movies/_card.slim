@@ -2,7 +2,14 @@
   .card.movie-card.mb-3
     .card-body
       h5.card-title= movie.title
-      h6.card-subtitle.mb-2.text-muted= movie.average_rate.round(1)
-      small= "Category: " + movie.categories.pluck(:name).join(', ')
+      - average_rate = movie.average_rate.present? ? movie.average_rate.round(1) : ''
+      h6.card-subtitle.mb-2.text-muted= average_rate.present? ? "Rating: #{average_rate.to_s}" : 'This Movie has no rating'
+      - if user_signed_in?
+        .movie-rating data-curret-score="#{average_rate}" data-movie-id="#{movie.id}"
+      - else
+        p
+          small Login to rate this movie
+      p
+        small= "Category: " + movie.categories.pluck(:name).join(', ')
       p.card-text= truncate(movie.description, length: 80)
       a.card-link href="#{movie_path movie}" View Details
