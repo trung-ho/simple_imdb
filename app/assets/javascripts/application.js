@@ -10,10 +10,25 @@ $(function() {
         numStars: 5,
         halfStar: true,
         onSet: function (rating, rateYoInstance) {
-          byebug
-          console.log(rating);
+          new_rating(rating, this.dataset.movieId);
         }
       });
     });
   }
 });
+
+function new_rating(score, movieId) {
+  $.ajax({
+    type: "POST",
+    url: '/api/ratings',
+    dataType: 'json',
+    data: {
+      score: score,
+      movie_id: movieId
+    },
+    success: function(data){
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+    }
+  });
+}
