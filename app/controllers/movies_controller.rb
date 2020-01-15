@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all.includes(:categories)
+    @movies = Movie.all.includes(:categories).page(params[:page])
   end
 
   def show

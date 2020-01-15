@@ -1,3 +1,6 @@
 .row
   - if @movies.present?
     = render partial: "card", collection: @movies, as: :movie
+.row
+  .col
+    = paginate @movies
