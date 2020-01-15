@@ -1,6 +1,12 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all.includes(:categories, :ratings).page(params[:page])
+    @categories = Category.all
+    
+    if params[:category_id].present?
+      @movies = Category.find(params[:category_id]).movies.page(params[:page])
+    else
+      @movies = Movie.all.includes(:categories, :ratings).page(params[:page])
+    end
   end
 
   def show
