@@ -3,9 +3,11 @@
     .card-body
       h5.card-title= movie.title
       - average_rate = movie.average_rate.present? ? movie.average_rate.round(1) : ''
+      - current_rating = movie.rated_by current_user
+      - rating_id = current_rating.present? ? current_rating.id : ''
       h6.card-subtitle.mb-2.text-muted= average_rate.present? ? "Rating: #{average_rate.to_s}" : 'This Movie has no rating'
       - if user_signed_in?
-        .movie-rating data-curret-score="#{average_rate}" data-movie-id="#{movie.id}"
+        .movie-rating data-current-score="#{average_rate}" data-movie-id="#{movie.id}" data-rating-id="#{rating_id}"
       - else
         p
           small Login to rate this movie
