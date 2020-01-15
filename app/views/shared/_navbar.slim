@@ -5,5 +5,13 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
       li.nav-item
-        a.nav-link href="#{movies_path}" 
-          | Movies
+        a.nav-link href="#{movies_path}" Movies
+    ul.navbar-nav
+      - if user_signed_in?
+        li.nav-item
+          a.nav-link href="#{destroy_user_session_path}" Logout
+      - else
+        li.nav-item
+          a.nav-link href="#{new_user_registration_path}" Register
+        li.nav-item
+          a.nav-link href="#{new_user_session_path}" Login

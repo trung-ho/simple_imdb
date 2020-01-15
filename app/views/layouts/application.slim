@@ -11,6 +11,10 @@ html
     #main-header-navbar
       .container.mb-3
         = render partial: "shared/navbar"
+    #main-alert
+      .container
+        p.notice= notice
+        p.alert= alert
     #main-page
       .container
         = yield
