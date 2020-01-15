@@ -2,7 +2,7 @@
   .card.movie-card.mb-3
     .card-body
       h5.card-title= movie.title
-      h6.card-subtitle.mb-2.text-muted Rating
+      h6.card-subtitle.mb-2.text-muted= movie.average_rate.round(1)
       small= "Category: " + movie.categories.pluck(:name).join(', ')
       p.card-text= truncate(movie.description, length: 80)
       a.card-link href="#{movie_path movie}" View Details

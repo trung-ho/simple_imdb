@@ -3,7 +3,7 @@
     - if @movie.average_rate.nil?
       | This movie hasn't been rate yet
     - else
-      | Rating: 
+      = 'Rating: ' + @movie.average_rate.round(1).to_s
   .card-body
     h5.card-title= @movie.title
     p.card-text= @movie.description
