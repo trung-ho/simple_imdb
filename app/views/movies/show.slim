@@ -1,0 +1,11 @@
+.card.text-center
+  .card-header
+    - if @movie.average_rate.nil?
+      | This movie hasn't been rate yet
+    - else
+      | Rating: 
+  .card-body
+    h5.card-title= @movie.title
+    p.card-text= @movie.description
+    a.btn.btn-primary href="#"  Vote
+  .card-footer.text-muted= @movie.categories.pluck(:name).join(', ')

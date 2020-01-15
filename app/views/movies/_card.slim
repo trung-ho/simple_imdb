@@ -5,5 +5,4 @@
       h6.card-subtitle.mb-2.text-muted Rating
       small= "Category: " + movie.categories.pluck(:name).join(', ')
       p.card-text= truncate(movie.description, length: 80)
-      a.card-link href="#"  Card link
-      a.card-link href="#"  Another link
+      a.card-link href="#{movie_path movie}" View Details
