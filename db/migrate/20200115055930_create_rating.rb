@@ -3,6 +3,7 @@ class CreateRating < ActiveRecord::Migration[5.2]
     create_table :ratings do |t|
       t.belongs_to :user, null: false
       t.belongs_to :movie, null: false
+      t.float :score
       t.timestamps null: false
     end
   end
