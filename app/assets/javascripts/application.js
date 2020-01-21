@@ -41,6 +41,7 @@ function new_rating(score, movieId) {
       movie_id: movieId
     },
     success: function(data){
+      update_rating_text(data.movie);
     },
     error: function (xhr, ajaxOptions, thrownError) {
     }
@@ -56,8 +57,15 @@ function update_rating(score, ratingId) {
       score: score
     },
     success: function(data){
+      update_rating_text(data.movie);
     },
     error: function (xhr, ajaxOptions, thrownError) {
     }
   });
+}
+
+function update_rating_text(movie) {
+  var element_id = 'movie-card-' + movie.id;
+  var card = $('#' + element_id);
+  card.find('.average_rate').text('Rating: ' + movie.average_rate);
 }

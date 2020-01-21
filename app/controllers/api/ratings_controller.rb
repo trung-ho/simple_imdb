@@ -3,7 +3,8 @@ module Api
     def create
       rating = current_user.ratings.new movie_id: params[:movie_id], score: params[:score].to_f
       if rating.save
-        render json: {success: true}, status: :ok
+        movie = rating.movie
+        render json: {success: true, movie: movie}, status: :ok
       else
         render json: {success: false}, status: :bad_request
       end
@@ -13,7 +14,8 @@ module Api
       rating = current_user.ratings.where(id: params[:id]).last
       if rating.present?
         rating.update score: params[:score].to_f
-        render json: {success: true}, status: :ok
+        movie = rating.movie
+        render json: {success: true, movie: movie}, status: :ok
       else
         render json: {error: 'not found'}, status: :not_found
       end
