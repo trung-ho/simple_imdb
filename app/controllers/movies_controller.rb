@@ -3,9 +3,9 @@ class MoviesController < ApplicationController
     @categories = Category.all
     
     if params[:category_id].present?
-      @movies = Category.find(params[:category_id]).movies.page(params[:page])
+      @movies = Category.find(params[:category_id]).movie.order(created_at: :desc).page(params[:page])
     else
-      @movies = Movie.all.includes(:categories, :ratings).page(params[:page])
+      @movies = Movie.all.includes(:categories, :ratings).order(created_at: :desc).page(params[:page])
     end
   end
 
