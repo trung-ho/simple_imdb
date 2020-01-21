@@ -4,7 +4,7 @@ module Api
       rating = current_user.ratings.new movie_id: params[:movie_id], score: params[:score].to_f
       if rating.save
         movie = rating.movie
-        render json: {success: true, movie: movie}, status: :ok
+        render json: {success: true, movie: movie, rating: rating}, status: :ok
       else
         render json: {success: false}, status: :bad_request
       end
