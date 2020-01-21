@@ -13,12 +13,17 @@ $(function() {
         rating: movie_score,
         starWidth: "20px",
         numStars: 5,
-        halfStar: true,
+        precision: 2,
+        fullStar: true,
         onSet: function (rating, rateYoInstance) {
-          if(current_rating_id == ''){
-            new_rating(rating, this.dataset.movieId);
-          } else {
-            update_rating(rating, current_rating_id)
+          if(rating == '0'){
+            alert('Rating must between 1 to 5');
+          }else{
+            if(current_rating_id == ''){
+              new_rating(rating, this.dataset.movieId);
+            } else {
+              update_rating(rating, current_rating_id)
+            }
           }
         }
       });
